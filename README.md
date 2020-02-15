@@ -13,24 +13,38 @@ docker run -d --hostname rabbit3 --name myrabbit3 -p 5674:5672 --link myrabbit1:
 After creating three nodes login to each instance and execute followng bash commands to initialize the cluster:
 
 Node 1:
+
 > docker exec -it myrabbit1 bash
+
 > rabbitmqctl stop_app
+
 > rabbitmqctl reset
+
 > rabbitmqctl start_app
 
 
 Node 2:
+
 > docker exec -it myrabbit2 bash
+
 > rabbitmqctl stop_app
+
 > rabbitmqctl reset
+
 > rabbitmqctl join_cluster --ram rabbit@rabbit1
+
 > rabbitmqctl start_app
 
 
 Node 3:
+
 > docker exec -it myrabbit2 bash
+
 > rabbitmqctl stop_app
+
 > rabbitmqctl reset
+
 > rabbitmqctl join_cluster --ram rabbit@rabbit1
+
 > rabbitmqctl start_app
 
